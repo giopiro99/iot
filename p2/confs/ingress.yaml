@@ -1,0 +1,41 @@
+apiVersion: networking.k8s.io/v1 # Dichiara l'uso delle API di rete moderne di Kubernetes
+kind: Ingress                    # Definisce il tipo di oggetto (il "Vigile Urbano")
+metadata:
+  name: apps-ingress             # Nome identificativo della risorsa nel cluster
+spec:
+  rules:                         # Elenco delle regole di smistamento (lette dall'alto verso il basso)
+  
+  # --- REGOLA 1: Instradamento specifico per App 1 ---
+  - host: app1.com               # Condizione: L'utente ha digitato "app1.com" nel browser
+    http:
+      paths:
+      - pathType: Prefix         # Condizione aggiuntiva: l'URL inizia con la root ("/")
+        path: "/"
+        backend:
+          service:
+            name: app-service-1  # Azione: Invia il traffico a questo Service interno
+            port:
+              number: 80         # Azione: Bussa alla porta 80 di quel Service
+
+  # --- REGOLA 2: Instradamento specifico per App 2 ---
+  - host: app2.com               # Condizione: L'utente ha digitato "app2.com"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: app-service-2  # Azione: Invia il traffico al Service dell'App 2
+            port:
+              number: 80
+
+  # --- REGOLA 3: Regola di Default ---
+  - http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: app-service-3  # Se non è app1 e non è app2, manda TUTTO il resto qui.
+            port:
+              number: 80

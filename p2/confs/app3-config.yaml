@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config-3
+data:
+  # il simbolo | in yaml fa prendere tutto quello che c e' dopo come valore,
+  # cosi' com e', con accapo indentazioni ecc
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+      <head><title>App 3</title></head>
+      <body>
+        <h1>app3</h1>
+      </body>
+    </html>

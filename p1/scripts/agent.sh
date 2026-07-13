@@ -14,6 +14,8 @@ until nc -zv 192.168.56.110 6443 &> /dev/null 2>&1; do
     sleep 5
 done
 
+echo "DEBUG-AGENT: Il token ricevuto da Vagrant è: '${K3S_CLUSTER_TOKEN}'"
+
 curl -sfL https://get.k3s.io | \
     INSTALL_K3S_EXEC="agent --server https://192.168.56.110:6443 --node-ip 192.168.56.111 --flannel-iface=enp0s8 --token ${K3S_CLUSTER_TOKEN}" \
         sh -s -

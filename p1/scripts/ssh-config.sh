@@ -16,4 +16,5 @@ chmod 755 ~
 chmod 700 $SSH_PATH
 chmod 644 $SSH_PATH/id_rsa.pub
 chmod 600 $SSH_PATH/authorized_keys $SSH_PATH/id_rsa
+
 echo "configurazione ssh finita"
