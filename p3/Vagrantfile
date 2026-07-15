@@ -3,7 +3,6 @@
 
 
 Vagrant.configure("2") do |config|
-
   config.vm.box = "ubuntu/jammy64"
   config.vm.define "gpirozziS3" do |gpirozziS3|
     gpirozziS3.vm.hostname = "gpirozzi"
@@ -14,6 +13,9 @@ Vagrant.configure("2") do |config|
     gpirozziS3.vm.provision "shell",
     path: "scripts/get-k3d.sh",
     name: "k3d-init"
+    gpirozziS3.vm.provision "shell",
+    path: "scripts/get-argocd.sh",
+    name: "argocd-init"
     gpirozziS3.vm.provider "virtualbox" do |vb|
       vb.name = "gpirozziS3"
       vb.memory = "2048"
