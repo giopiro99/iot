@@ -24,7 +24,7 @@ Vagrant.configure("2") do |config|
     path: "scripts/server.sh"
     # creo una cartella condivisa appostaper i file YAML in modo che nello script posso 
     # fare un comando solo e applicare tutte le configurazioni
-    gpirozziS2.vm.synced_folder "./confs  ", "/var/k3s"
+    gpirozziS2.vm.synced_folder "./confs", "/var/k3s"
     gpirozziS2.vm.provider "virtualbox" do |vb|
       vb.name = "gpirozziS2"
       vb.memory = "1024"

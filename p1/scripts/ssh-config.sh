@@ -3,7 +3,7 @@
 echo "configurazione ssh iniziata"
 
 SSH_PATH="/home/vagrant/.ssh"
-KEYS_PATH="/vagrant/ssh-keys"
+KEYS_PATH="/vagrant/confs"
 
 cp $KEYS_PATH/id_rsa.pub $SSH_PATH/id_rsa.pub
 cp $KEYS_PATH/id_rsa $SSH_PATH/id_rsa
