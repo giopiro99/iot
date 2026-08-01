@@ -16,10 +16,13 @@ Vagrant.configure("2") do |config|
     gpirozziS3.vm.provision "shell",
     path: "scripts/get-argocd.sh",
     name: "get-argocd"
+    gpirozziS3.vm.provision "shell",
+    path: "scripts/get-helm.sh",
+    name: "get-helm"
     gpirozziS3.vm.provider "virtualbox" do |vb|
       vb.name = "gpirozziS3"
-      vb.memory = "4096"
-      vb.cpus = 4
+      vb.memory = "8000"
+      vb.cpus = 6
     end
   end
 end
