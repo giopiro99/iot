@@ -1,0 +1,19 @@
+rootUser: "admin"
+rootPassword: "SuperSegretaRoot!"
+mode: standalone
+replicas: 1
+persistence:
+  enabled: true
+  size: 5Gi
+buckets:
+  - name: gitlab-artifacts
+  - name: gitlab-lfs
+  - name: gitlab-uploads
+  - name: gitlab-packages
+  - name: gitlab-dependency-proxy
+  - name: gitlab-pages
+  - name: gitlab-mr-diffs
+  - name: gitlab-terraform-state
+  - name: gitlab-ci-secure-files
+  - name: gitlab-backups
+  - name: gitlab-tmp

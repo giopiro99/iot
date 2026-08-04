@@ -1,0 +1,70 @@
+global:
+  ingress:
+    installCertmanager: false
+    tls:
+      enabled: false
+  ## https://docs.gitlab.com/charts/charts/globals#configure-postgresql-settings
+  psql:
+    knownDecompositions:
+      - main
+      - ci
+      - embedding
+      - sec
+    password:
+      useSecret: true
+      secret: postgres-credentials
+      key: password
+    # possiamo scriverlo anche in questo modo my-postgres-postgresql questo
+    # funziona solo se i trovano nello stesso namespace,
+    # ma la best practice e' quella di scriverlo come sotto:
+    # my-postgres-postgresql: Il nome del Service.ù
+    # gitlab: Il namespace in cui si trova.
+    # svc: Sta per "Service".
+    # cluster.local: Il dominio radice del tuo cluster Kubernetes.
+    host: my-postgres-postgresql.gitlab.svc.cluster.local
+    port: 5432
+    username: gitlab
+    database: gitlabhq_production
+
+  ## https://docs.gitlab.com/charts/charts/globals#configure-redis-settings
+  redis:
+    auth:
+      enabled: true
+      secret: redis-credentials
+      key: redis-password
+    host: redis-master.gitlab.svc.cluster.local
+    port: 6379
+
+  #configurazione dell object storage
+  appConfig:
+    object_store:
+      enabled: true
+      connection:
+        secret: s3-connection-secret
+    backups:
+      bucket: gitlab-backups
+      tmpBucket: gitlab-tmp
+
+  shell:
+    port: 32022
+  
+  registry:
+    enabled: false
+
+postgresql:
+  install: false
+redis:
+  install: false
+gitlab-runner:
+  install: false
+certmanager-issuer: 
+  email: giovannipirozzi12345@gmail.com
+registry:
+  enabled: false
+gitlab:
+  toolbox:
+    backups:
+      objectStorage:
+        config:
+          secret: s3-connection-secret
+          key: connection

@@ -1,0 +1,6 @@
+provider: AWS
+aws_access_key: admin
+aws_secret_access_key: SuperSegretaRoot!
+region: us-east-1
+endpoint: my-minio.gitlab.svc.cluster.local
+path_style: true
