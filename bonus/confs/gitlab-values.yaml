@@ -1,4 +1,9 @@
 global:
+  kas:
+    enabled: false
+  hosts:
+    domain: gitlab.exemple.com
+    https: false
   ingress:
     installCertmanager: false
     tls:
@@ -14,13 +19,6 @@ global:
       useSecret: true
       secret: postgres-credentials
       key: password
-    # possiamo scriverlo anche in questo modo my-postgres-postgresql questo
-    # funziona solo se i trovano nello stesso namespace,
-    # ma la best practice e' quella di scriverlo come sotto:
-    # my-postgres-postgresql: Il nome del Service.ù
-    # gitlab: Il namespace in cui si trova.
-    # svc: Sta per "Service".
-    # cluster.local: Il dominio radice del tuo cluster Kubernetes.
     host: my-postgres-postgresql.gitlab.svc.cluster.local
     port: 5432
     username: gitlab
@@ -61,7 +59,25 @@ certmanager-issuer:
   email: giovannipirozzi12345@gmail.com
 registry:
   enabled: false
+prometheus:
+  install: false
+
 gitlab:
+  gitlab-shell:
+    minReplicas: 1
+    maxReplicas: 1
+  gitlab-exporter:
+    enabled: false
+  webservice:
+    minReplicas: 1
+    maxReplicas: 1
+    workerProcesses: 1
+  kas:
+    enabled: false
+  sidekiq:
+    minReplicas: 1
+    maxReplicas: 1
+    concurrency: 5
   toolbox:
     backups:
       objectStorage:

@@ -1,0 +1,11 @@
+auth:
+  existingSecret: "redis-credentials"
+  existingSecretPasswordKey: "redis-password"
+architecture: standalone
+resources:
+  requests:
+    memory: "256Mi"
+    cpu: "100m"
+  limits:
+    memory: "512Mi"
+    cpu: "500m"

@@ -1,5 +1,5 @@
-rootUser: "admin"
-rootPassword: "SuperSegretaRoot!"
+rootUser: "__MINIO_USER__"
+rootPassword: "__MINIO_PASSWORD__"
 mode: standalone
 replicas: 1
 persistence:
