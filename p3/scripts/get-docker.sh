@@ -5,7 +5,7 @@ export DEBIAN_FRONTEND=noninteractive
 echo "avvio script per installare docker"
 # Add Docker's official GPG key:
 apt-get update -y
-apt-get install ca-certificates curl
+apt-get install -y ca-certificates curl
 install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
 chmod a+r /etc/apt/keyrings/docker.asc

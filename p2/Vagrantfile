@@ -14,7 +14,9 @@ end
 K3S_TOKEN = ENV['K3S_CLUSTER_TOKEN'] || "token-sviluppo"
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "ubuntu/jammy64"
+  # box ufficiale pubblicata da ubuntu, non dal registry di hashicorp
+  config.vm.box = "ubuntu-22.04"
+  config.vm.box_url = "https://cloud-images.ubuntu.com/releases/jammy/release/ubuntu-22.04-server-cloudimg-amd64-vagrant.box"
   config.vm.define "gpirozziS2" do |gpirozziS2|
     gpirozziS2.vm.hostname = "gpirozziS2"
     gpirozziS2.vm.network "private_network", ip: "192.168.56.110"
