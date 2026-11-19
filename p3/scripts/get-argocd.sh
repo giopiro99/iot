@@ -21,8 +21,9 @@ k3d kubeconfig get iot-cluster > /home/vagrant/.kube/config
 chown vagrant:vagrant /home/vagrant/.kube/config
 export KUBECONFIG=/home/vagrant/.kube/config
 
-echo "creo il namespace argocd"
+echo "creo i namespace"
 kubectl create namespace argocd
+kubectl create namespace dev
 kubectl apply -n argocd --server-side --force-conflicts -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 kubectl config set-context --current --namespace=argocd
 
