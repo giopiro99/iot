@@ -31,7 +31,7 @@ Vagrant.configure("2") do |config|
       path: "scripts/server.sh"
     gpirozziS.vm.provider "virtualbox" do |vb|
       vb.name = "gpirozziS"
-      vb.memory = "1024"
+      vb.memory = "2048"
       vb.cpus = 1
     end
   end
@@ -49,7 +49,7 @@ Vagrant.configure("2") do |config|
       path: "scripts/agent.sh"
     gpirozziSW.vm.provider "virtualbox" do |vb|
       vb.name = "gpirozziSW"
-      vb.memory = "1024"
+      vb.memory = "2048"
       vb.cpus = 1
     end
   end
